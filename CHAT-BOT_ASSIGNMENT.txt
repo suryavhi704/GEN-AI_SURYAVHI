@@ -1,0 +1,65 @@
+# Import necessary libraries
+from transformers import pipeline
+
+# Define the model ID
+model_id = 'google/flan-t5-base'
+
+# Load the chatbot pipeline
+chatbot = pipeline('text2text-generation', model=model_id)
+
+# Define the chat function
+def chat(user_input, user_role):
+    prompt = f'As a {user_role}, please answer the following: {user_input}'
+    reply = chatbot(prompt, max_new_tokens=100)[0]['generated_text']
+    return reply
+
+# Start the chat loop
+print('Hii Surya...its your BOT..let"s talk\nif you dont want press exit..')
+while True:
+    inp = input('You:')
+    if inp.lower() == 'exit':
+        print('OK....byy..\nThank You')
+        break
+    else:
+        role = input("Enter your role:-")
+        reply = chat(inp, role)
+        print('Bot:', reply)
+
+
+# COMMUNICATION:-
+
+Hii Surya...its your BOT..let"s 
+ if you dont want press exit..
+You:what is machine learning?
+Enter your role:-student
+Bot: Machine learning is the study of a computer program that learns a computer program from a computer program.
+You:what is machine learning?
+Enter your role:-teacher
+Bot: Machine learning is the development of algorithms that can be used to predict the future of a computer program.
+You:what is ai?
+Enter your role:-student
+Bot: Arithmetic
+You:what is ai?
+Enter your role:-industry expert
+Bot: Industrial Automation
+You:should world war 3 occur?
+Enter your role:-student
+Bot: no
+You:who is the prime minister of india?
+Enter your role:-student
+Bot: Jawaharlal Nehru
+You:who is Narendra Modi?
+Enter your role:-teacher
+Bot: Deputy Prime Minister of India
+You:tell me todays date and year.
+Enter your role:-student
+Bot:                                                  
+You:are you happy?
+Enter your role:-chat bot
+Bot: no, i'm not happy.
+You:exit.
+Enter your role:-student
+Bot: is a word that can be used to describe a person or group of people.
+You:exit
+OK....byy..
+Thank You
